@@ -10,5 +10,41 @@ public class Pattern {
          */
 
 
+        int number = 0;
+        for (int i = 100; i >= 0; i--) {
+            number++;
+            if (number <= 10) {
+                System.out.print(i + ", ");
+            } else {
+                for (i = 90; i >= 0; i -= 2) {
+                    if (number > 10 && number <= 20) {
+                        System.out.print(i + ", ");
+                        number++;
+                    } else {
+                        for (i = 70; i >= 0; i -= 3) {
+                            if (number > 20 && number <= 30) {
+                                System.out.print(i + ", ");
+                                number++;
+                            } else {
+                                for (i = 40; i >= 0; i -= 4) {
+                                    if (number > 30 && number <= 20) {
+                                        System.out.print(i + ", ");
+                                        number++;
+                                    }else{
+                                        for (i =20; i >=0; i -=5){
+                                            System.out.print(i +", ");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+
     }
 }

@@ -32,6 +32,7 @@ public class Numbers {
         printValue(numbers);
         int n = num.length;
         randomize(num, n);
+
         //Insertion Sort
         algo.insertionSort(num);
         long insertionSortExecutionTime = algo.executionTime;
@@ -39,6 +40,10 @@ public class Numbers {
 
         //By following above, Continue for rest of the Sorting Algorithm....
 
+        connectToSqlDB.insertDataFromArrayToSqlTable(num,"Insertion_Sort","SortingNumbers");
+
+        //print number values
+        randomize (num, n);
 
         //Come to conclusion about which Sorting Algo is better in given data set.
 

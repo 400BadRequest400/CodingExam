@@ -1,5 +1,6 @@
 package string.problems;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,6 +13,16 @@ public class DetermineLargestWord {
         String s = "Human brain is a biological learning machine";
         Map<Integer, String> wordNLength = findTheLargestWord(s);
         //implement
+
+        String []array = s.split(" ");
+        String longestWord= "";
+
+        for (int i=0; i<array.length; i++){
+            if (array[i].length()> longestWord.length()){
+                longestWord = array[i];
+            }
+        }
+        System.out.println(longestWord.length()+" "+longestWord);
 
     }
 

@@ -2,7 +2,7 @@ package design;
 
 import java.util.Scanner;
 
-public class EmployeeInfo {
+public class EmployeeInfo extends AbstractClass implements Employee{
 
     /*This class can be implemented from Employee interface then add additional methods in EmployeeInfo class.
      * Also, Employee interface can be implemented into an abstract class.So create an Abstract class
@@ -16,11 +16,57 @@ public class EmployeeInfo {
      * Use Exception Handling.
      *
      */
+    @Override
+    public int employeeId() {
+        return 0;
+    }
+
+    @Override
+    public String employeeName() {
+        return null;
+    }
+
+    @Override
+    public void assignDepartment() {
+
+    }
+
+    @Override
+    public int calculateSalary() {
+        return 0;
+    }
+
+    @Override
+    public void benefitLayout() {
+
+    }
+
+    @Override
+    public void sickTime() {
+        super.sickTime();
+    }
+
+    public void nestedMethod() {
+        System.out.println("This is for a Nested Method");
+    }
+
 
     /*
      * declare few static and final fields and some non-static fields
      */
     static String companyName;
+    private int employeeId;
+    private String name;
+    static int performance;
+    static int salary = 100000;
+
+    public static String getCompanyName() {
+        return companyName;
+    }
+
+    public static void setCompanyName(String companyName) {
+        EmployeeInfo.companyName = companyName;
+    }
 
     /*
      * You must implement the logic for below 2 methods and
@@ -32,12 +78,17 @@ public class EmployeeInfo {
      * you must have multiple constructor.
      * Must implement below constructor.
      */
-    public EmployeeInfo(int employeeId) {
+    public  EmployeeInfo(){
 
     }
-
+    public EmployeeInfo(int employeeId) {
+        this.employeeId = employeeId;
+        System.out.println("Print employeeID:  "+employeeId);
+    }
     public EmployeeInfo(String name, int employeeId) {
-
+        this.name = name;
+        this.employeeId = employeeId;
+        System.out.println("Print name and employeeID:  "+name+" "+employeeId);
     }
 
     /*
@@ -48,10 +99,35 @@ public class EmployeeInfo {
      * So you probably need to send 2 arguments.
      *
      */
-    public static int calculateEmployeeBonus(int numberOfYearsWithCompany) {
-        int total = 0;
+
+    public static double calculateEmployeeBonus(int numberOfYearsWithCompany){
+        double total=0;
+        double bonus;
+
+        if(performance >= 8){
+            bonus = salary * .1;
+            System.out.println("Employees bonus best performance = $"+bonus);
+
+            if (numberOfYearsWithCompany >= 5){
+                total = salary + bonus;
+            }
+            System.out.println("Total with best performance is: "+total);
+
+        }else{
+            bonus = salary*.08;
+        System.out.println("Employees bonus average performance = $"+bonus);}
+
+         if (numberOfYearsWithCompany < 5){
+            total = salary + bonus;
+         }
+        System.out.println("Total with average performance is: $"+total);
+
+
         return total;
     }
+
+
+
 
     /*
      * This methods should calculate Employee Pension based on salary and numbers of years with the company.
@@ -59,22 +135,42 @@ public class EmployeeInfo {
      * Hints: pension will be 5% of the salary for 1 year, 10% for 2 years with the company and so on.
      *
      */
-    public static int calculateEmployeePension() {
-        int total = 0;
-        Scanner sc = new Scanner(System.in);
+    public static double calculateEmployeePension(double start_may_2017, double current_may_2019) {
+        double pensionTotal = 0;
+
+        /*Scanner sc = new Scanner(System.in);
         System.out.println("Please enter start date in format (example: May,2015): ");
         String joiningDate = sc.nextLine();
         System.out.println("Please enter today's date in format (example: August,2017): ");
         String todaysDate = sc.nextLine();
+
         String convertedJoiningDate = DateConversion.convertDate(joiningDate);
         String convertedTodaysDate = DateConversion.convertDate(todaysDate);
 
         //implement numbers of year from above two dates
+
+         */
         //Calculate pension
 
+        //int start_may_2017 = 2017;
+        //int current_may_2019 = 2018;
 
-        return total;
+
+        if((current_may_2019 - start_may_2017)==1){
+
+            pensionTotal = salary*.05;
+
+        }else if((current_may_2019-start_may_2017)>=2){
+            pensionTotal = salary*.1;
+
+        }else pensionTotal = 0;
+            System.out.println("Employee Pension is = $" +pensionTotal);
+
+
+        return pensionTotal;
     }
+
+
 
     private static class DateConversion {
 

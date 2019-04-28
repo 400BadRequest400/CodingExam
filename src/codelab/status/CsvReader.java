@@ -19,8 +19,12 @@ public class CsvReader {
         String csvFilePath = System.getProperty("user.dir") + "/src/codelab/status/roster.Java-tba.1556113067.csv";
         String line = "";
         String cvsSplitBy = ",";
+
+
         BufferedReader br = null;
         List<Trainee> roster = new ArrayList<Trainee>();
+        int total =0;
+        int count =0;
 
         try {
             br = new BufferedReader(new FileReader(csvFilePath));
@@ -33,6 +37,10 @@ public class CsvReader {
                 String[] name = line.split(cvsSplitBy);
                 roster.add(new Trainee(name[5].replace("\"", ""), name[4].replace("\"",
                         ""), Integer.parseInt(name[10])));
+                int number=Integer.parseInt(name[10]);
+                total=total+number;
+                count++;
+
             }
 
         } catch (IOException e) {
@@ -64,6 +72,8 @@ public class CsvReader {
                 System.out.println(student.getFirstName() + " " + student.getLastName() + " " + student.getNumberOfExercisesSolved());
             }
         }
+        System.out.println();
+        System.out.println("The Average Score Of The Class is : "+total/count);
 
     }
 
